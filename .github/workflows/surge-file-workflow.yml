@@ -1,0 +1,60 @@
+name: Surge File Workflow
+
+on:
+  schedule:
+    # 每天上海时间12点触发
+    - cron: '0 4 * * *'  # UTC时间是12:00，上海时间是4:00
+  workflow_dispatch: # 手动触发
+
+jobs:
+  merge_and_process:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 获取完整的 Git 历史以支持合并操作
+
+      # Step 2: Configure Git
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Step 3: Merge external repository into master branch
+      - name: Merge external repository
+        run: |
+          # 添加外部仓库
+          git remote add external https://github.com/blackmatrix7/ios_rule_script.git
+          # 获取外部仓库
+          git fetch external
+          # 合并 Surge 文件夹
+          git merge --allow-unrelated-histories -X theirs external/master --no-edit
+
+      # Step 4: Check for changes and commit if any
+      - name: Commit merge changes if any
+        run: |
+          # 检查是否有文件变更
+          git diff --exit-code || (
+            git add .
+            git commit -m "Automated merge of external Surge files"
+            git push origin master
+          )
+
+      # Step 5: Run Surge file processing script
+      - name: Run Surge file processing script
+        run: |
+          python process_surge_files.py
+
+      # Step 6: Commit and push processed files
+        # 文件处理逻辑完成后，确保提交和推送修改后的内容
+      - name: Commit processed files if any
+        run: |
+          # 检查是否有文件变更
+          git diff --exit-code || (
+            git add .
+            git commit -m "Automated processing of Surge files after merge"
+            git push origin master
+          )
