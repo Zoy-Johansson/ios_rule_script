@@ -1,4 +1,4 @@
-name: Surge File Workflow
+name: Merge and Process Surge Files
 
 on:
   schedule:
@@ -11,50 +11,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
+      # 检出当前仓库
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      # 配置 Git 用户信息
+      - name: Configure Git user
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      # 合并目标仓库的 Surge 文件夹
+      - name: Merge Surge folder from target repository
+        run: |
+          git remote add target-repo https://github.com/blackmatrix7/ios_rule_script.git
+          git fetch --depth=1 target-repo master
+          git rm -rf rule/Surge  # 删除现有的 rule/Surge 文件夹
+          git checkout target-repo/master -- rule/Surge  # 合并目标仓库的 Surge 文件夹
+          git commit -m "Merge Surge folder from blackmatrix7/ios_rule_script"
+
+      # 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          fetch-depth: 0  # 获取完整的 Git 历史以支持合并操作
+          python-version: '3.x'
 
-      # Step 2: Configure Git
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      # Step 3: Merge external repository into master branch
-      - name: Merge external repository
-        run: |
-          # 添加外部仓库
-          git remote add external https://github.com/blackmatrix7/ios_rule_script.git
-          # 获取外部仓库
-          git fetch external
-          # 合并 Surge 文件夹
-          git merge --allow-unrelated-histories -X theirs external/master --no-edit
-
-      # Step 4: Check for changes and commit if any
-      - name: Commit merge changes if any
-        run: |
-          # 检查是否有文件变更
-          git diff --exit-code || (
-            git add .
-            git commit -m "Automated merge of external Surge files"
-            git push origin master
-          )
-
-      # Step 5: Run Surge file processing script
+      # 运行文件处理脚本
       - name: Run Surge file processing script
         run: |
           python process_surge_files.py
 
-      # Step 6: Commit and push processed files
-        # 文件处理逻辑完成后，确保提交和推送修改后的内容
-      - name: Commit processed files if any
+      # 提交处理后的文件
+      - name: Commit processed files
         run: |
-          # 检查是否有文件变更
-          git diff --exit-code || (
-            git add .
-            git commit -m "Automated processing of Surge files after merge"
-            git push origin master
-          )
+          git add .
+          git commit -m "Processed Surge files"
+          git push
