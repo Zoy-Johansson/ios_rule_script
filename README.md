@@ -1,3 +1,7 @@
+# 拆分Surge的IP规则和其他类型的规则
+
+将原本Surge规则中的IP-CIDR, IP-CIDR6以及IP-ASN类型的规则提取出来生成一个名称为*_ip.list的新文件，其他类型的规则生成一个名称为*_other.list的新文件。
+
 # Rules And Scripts
 
 ## 前言
