@@ -1,0 +1,20 @@
+#ipcheck
+DOMAIN-SUFFIX,ip.sb 
+DOMAIN-SUFFIX,ip-api.com 
+DOMAIN-SUFFIX,whoer.net 
+DOMAIN-SUFFIX,ip.skk.moe 
+DOMAIN-SUFFIX,ipinfo.io 
+DOMAIN-SUFFIX,ip-score.com 
+DOMAIN-SUFFIX,ipwhois.app 
+DOMAIN-SUFFIX,api-ipv4.ip.sbg 
+# 机场
+DOMAIN-SUFFIX,tagss01.pro 
+DOMAIN-SUFFIX,nexitally.com 
+DOMAIN-SUFFIX,mesl.cloud 
+DOMAIN-SUFFIX,flower.yt 
+DOMAIN-SUFFIX,flowercloud.net 
+DOMAIN-SUFFIX,flowercloud.xyz 
+DOMAIN-SUFFIX,kuromis.com 
+# DOMAIN-SUFFIX,nexconvert.com 
+DOMAIN,sub-store.vercel.app 
+DOMAIN-SUFFIX,jinglongyu.com 
