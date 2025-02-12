@@ -1,0 +1,8 @@
+DOMAIN-KEYWORD,pcdn,REJECT
+DOMAIN-KEYWORD,mcdn,REJECT
+AND,((PROTOCOL,UDP), (OR,((DOMAIN-KEYWORD,bilibili), (DOMAIN-KEYWORD,biliapi), (DOMAIN-KEYWORD,pcdn), (DOMAIN-KEYWORD,mcdn), (DOMAIN-KEYWORD,douyu))))
+AND,((PROTOCOL,TCP), (OR,((DOMAIN-KEYWORD,stun), (DOMAIN-KEYWORD,douyu))))
+AND,((DOMAIN-KEYWORD,genuine), (DOMAIN-KEYWORD,autodesk))
+AND,((USER-AGENT,bili*), (NOT,((OR,((DOMAIN-SUFFIX,bilibili.com), (DOMAIN-SUFFIX,hdslb.com), (DOMAIN-SUFFIX,wo.cn), (DOMAIN-SUFFIX,biligame.com), (DOMAIN-SUFFIX,bilivideo.com), (DOMAIN-SUFFIX,bilivideo.cn), (DOMAIN-SUFFIX,biliapi.com), (DOMAIN-SUFFIX,biliapi.net), (DOMAIN-SUFFIX,biliintl.com), (DOMAIN-SUFFIX,bstarstatic.com), (DOMAIN-SUFFIX,akamaized.net))))))
+# 屏蔽勾正数据
+DOMAIN-SUFFIX,gz-data.com
