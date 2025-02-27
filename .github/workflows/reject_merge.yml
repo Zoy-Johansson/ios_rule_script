@@ -14,7 +14,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: master
-        path: repo
 
     # 处理 adrules.top 规则
     - name: Process adrules.top
@@ -26,7 +25,7 @@ jobs:
         grep -v '^#' adrules.conf > adrules_processed.conf
 
         # 步骤1.(2) 提取 DOMAIN-KEYWORD/WILDCARD 规则
-        grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_processed.conf | sort -u > reject_extra.list
+        grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_processed.conf | sort -u > source/reject_extra.list
 
         # 步骤1.(3) 处理 DOMAIN-SUFFIX 规则
         grep 'DOMAIN-SUFFIX' adrules_processed.conf | \
@@ -49,24 +48,22 @@ jobs:
       run: |
         # 合并步骤1.(3)和步骤2的内容
         cat suffix_processed.list skk_processed.conf antiad_processed.conf | \
-        sort -u > reject.conf
+        sort -u > source/reject.conf
 
-    # 更新仓库文件
-    - name: Update repository
+    # 提交更新
+    - name: Commit changes
       run: |
-        # 移动文件到指定目录
-        mkdir -p repo/source
-        mv reject_extra.list reject.conf repo/source/
-
-        # 配置 git
-        cd repo
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
 
-        # 提交更改
-        git add source/
-        git commit -m "Update rules: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-        git push origin master
+        # 检查文件变化
+        if [ -n "$(git status --porcelain)" ]; then
+          git add source/
+          git commit -m "Update rules: $(date +'%Y-%m-%d %H:%M:%S')"
+          git push origin master
+        else
+          echo "No changes to commit"
+        fi
 
     # 清理临时文件
     - name: Cleanup
