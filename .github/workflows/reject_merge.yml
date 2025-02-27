@@ -1,71 +1,59 @@
-name: Daily Rules Update
+name: Update Reject Files
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 北京时间每天0点（UTC时间16点）
+    # 每天北京时间0点执行（UTC时间 16:00）
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
-  process-rules:
+  update-reject:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        ref: master
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    # 处理 adrules.top 规则
-    - name: Process adrules.top
-      run: |
-        # 下载原始文件
-        curl -s https://adrules.top/adrules-surge.conf -o adrules.conf
+      - name: Process adrules-surge.conf
+        run: |
+          # 下载 adrules-surge.conf 文件
+          curl -s https://adrules.top/adrules-surge.conf -o adrules-surge.conf
+          # 删除以 # 开头的行
+          grep -v '^#' adrules-surge.conf > tmp.conf && mv tmp.conf adrules-surge.conf
+          # 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行，生成 reject_extra.list
+          grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules-surge.conf > reject_extra.list
+          # 提取包含 DOMAIN-SUFFIX 的行，
+          # 将行首的 "DOMAIN-SUFFIX," 替换为 "."（例如：DOMAIN-SUFFIX,example.com -> .example.com）
+          grep 'DOMAIN-SUFFIX' adrules-surge.conf | sed -E 's/^DOMAIN-SUFFIX,/\./' > adrules_suffix.txt
 
-        # 步骤1.(1) 删除注释行
-        grep -v '^#' adrules.conf > adrules_processed.conf
+      - name: Process other rules files
+        run: |
+          # 下载另外两个规则文件
+          curl -s https://ruleset.skk.moe/List/domainset/reject.conf -o reject1.conf
+          curl -s https://anti-ad.net/surge2.txt -o surge2.txt
+          # 删除以 # 开头的行
+          grep -v '^#' reject1.conf > tmp.conf && mv tmp.conf reject1.conf
+          grep -v '^#' surge2.txt > tmp.conf && mv tmp.conf surge2.txt
 
-        # 步骤1.(2) 提取 DOMAIN-KEYWORD/WILDCARD 规则
-        grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_processed.conf | sort -u > source/reject_extra.list
+      - name: Combine processed rules into reject.conf
+        run: |
+          # 合并 adrules_suffix.txt、reject1.conf 和 surge2.txt，去除重复项后生成 reject.conf
+          cat adrules_suffix.txt reject1.conf surge2.txt | sort -u > reject.conf
 
-        # 步骤1.(3) 处理 DOMAIN-SUFFIX 规则
-        grep 'DOMAIN-SUFFIX' adrules_processed.conf | \
-        sed 's/DOMAIN-SUFFIX,$.*$/.\1/' | \
-        sort -u > suffix_processed.list
+      - name: Move generated files to source folder
+        run: |
+          # 确保 source 文件夹存在，不影响原有文件，仅覆盖同名文件
+          mkdir -p source
+          mv -f reject.conf source/reject.conf
+          mv -f reject_extra.list source/reject_extra.list
 
-    # 处理其他两个规则源
-    - name: Process other sources
-      run: |
-        # 处理 skk.moe 规则
-        curl -s https://ruleset.skk.moe/List/domainset/reject.conf -o skk.conf
-        grep -v '^#' skk.conf > skk_processed.conf
-
-        # 处理 anti-ad.net 规则
-        curl -s https://anti-ad.net/surge2.txt -o antiad.conf
-        grep -v '^#' antiad.conf > antiad_processed.conf
-
-    # 合并规则并去重
-    - name: Merge rules
-      run: |
-        # 合并步骤1.(3)和步骤2的内容
-        cat suffix_processed.list skk_processed.conf antiad_processed.conf | \
-        sort -u > source/reject.conf
-
-    # 提交更新
-    - name: Commit changes
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-
-        # 检查文件变化
-        if [ -n "$(git status --porcelain)" ]; then
-          git add source/
-          git commit -m "Update rules: $(date +'%Y-%m-%d %H:%M:%S')"
-          git push origin master
-        else
-          echo "No changes to commit"
-        fi
-
-    # 清理临时文件
-    - name: Cleanup
-      run: |
-        rm -f adrules* skk* antiad* *.list *.conf
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add source/reject.conf source/reject_extra.list
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update reject.conf and reject_extra.list"
+            git push
+          else
+            echo "No changes detected."
+          fi
