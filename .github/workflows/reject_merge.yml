@@ -1,58 +1,61 @@
-name: Auto Update Rules
+name: Update Reject Rules
 
 on:
+  # 每天北京时间0点执行（UTC时间16:00）
   schedule:
-    - cron: '0 16 * * *'  # UTC时间16点（北京时间0点）
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
-  process-rules:
+  update-rules:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        ref: master
+      - name: Checkout 仓库
+        uses: actions/checkout@v2
 
-    - name: Process adrules-surge.conf
-      run: |
-        # 下载并处理第一个规则源
-        curl -s https://adrules.top/adrules-surge.conf -o adrules.conf
-        
-        # 提取 DOMAIN-KEYWORD/WILDCARD（直接输出到目标文件）
-        grep -E '^(DOMAIN-KEYWORD|DOMAIN-WILDCARD)' adrules.conf > source/reject_extra.list
-        
-        # 处理 DOMAIN-SUFFIX（保留原始目录结构）
-        grep '^DOMAIN-SUFFIX' adrules.conf | sed -e 's/DOMAIN-SUFFIX,\(.*\),.*/.\1/' > domain-suffix.tmp
+      - name: 创建临时目录
+        run: mkdir -p temp
 
-    - name: Process other rulesets
-      run: |
-        # 处理第二个规则源（自动覆盖临时文件）
-        curl -s https://ruleset.skk.moe/List/domainset/reject.conf | grep -v '^#' > skk.tmp
-        
-        # 处理第三个规则源（保留原始注释清理逻辑）
-        curl -s https://anti-ad.net/surge2.txt | grep -v '^#' | grep -v '^\s*$' > antiad.tmp  # 额外过滤空行
+      - name: 下载 adrules-surge.conf
+        run: |
+          curl -sL https://adrules.top/adrules-surge.conf -o temp/adrules-surge.conf
 
-    - name: Merge and deduplicate
-      run: |
-        # 合并并去重（确保最终文件格式统一）
-        cat domain-suffix.tmp skk.tmp antiad.tmp | awk '!seen[$0]++' > source/reject.conf  # 使用 awk 去重更高效
+      - name: 提取 DOMAIN-KEYWORD 和 DOMAIN-WILDCARD 内容到 reject_extra.list
+        run: |
+          grep -E '^(DOMAIN-KEYWORD|DOMAIN-WILDCARD)' temp/adrules-surge.conf > temp/reject_extra.list
 
-    - name: Secure commit
-      run: |
-        # 仅提交目标文件（保护现有其他文件）
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        
-        # 精确添加需要更新的文件
-        git add source/reject_extra.list
-        git add source/reject.conf
-        
-        # 检查是否有实际变更
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit"
-        else
-          git commit -m "Auto update: $(date +'%Y-%m-%d %H:%M:%S')"
-          git push origin master
-        fi
+      - name: 处理 DOMAIN-SUFFIX 行（转换为 .example.com 格式）
+        run: |
+          grep '^DOMAIN-SUFFIX' temp/adrules-surge.conf | sed -E 's/^DOMAIN-SUFFIX,/\./' > temp/adrules_suffix_processed.txt
+
+      - name: 下载并处理 reject.conf（去掉以 # 开头的行）
+        run: |
+          curl -sL https://ruleset.skk.moe/List/domainset/reject.conf -o temp/reject_skk.conf
+          grep -v '^#' temp/reject_skk.conf > temp/reject_skk_processed.txt
+
+      - name: 下载并处理 surge2.txt（去掉以 # 开头的行）
+        run: |
+          curl -sL https://anti-ad.net/surge2.txt -o temp/surge2.txt
+          grep -v '^#' temp/surge2.txt > temp/surge2_processed.txt
+
+      - name: 合并处理后的内容生成 reject.conf（去重）
+        run: |
+          cat temp/adrules_suffix_processed.txt temp/reject_skk_processed.txt temp/surge2_processed.txt | sort | uniq > source/reject.conf
+
+      - name: 将 reject_extra.list 移动到 source 文件夹
+        run: cp temp/reject_extra.list source/reject_extra.list
+
+      - name: 配置 Git 用户信息
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: 提交更改到仓库
+        run: |
+          git add source/reject.conf source/reject_extra.list
+          if ! git diff --cached --quiet; then
+            git commit -m "Update reject rules files"
+            git push
+          else
+            echo "No changes to commit."
+          fi
