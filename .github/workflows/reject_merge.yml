@@ -22,7 +22,7 @@ jobs:
 
       - name: 提取 DOMAIN-KEYWORD 和 DOMAIN-WILDCARD 内容到 reject_extra.list
         run: |
-          grep -E '^(DOMAIN-KEYWORD|DOMAIN-WILDCARD)' temp/adrules-surge.conf > temp/reject_extra.list
+          grep -E '^(DOMAIN-KEYWORD|DOMAIN-WILDCARD)' temp/adrules-surge.conf > temp/reject_extra.list || true
 
       - name: 处理 DOMAIN-SUFFIX 行（转换为 .example.com 格式）
         run: |
