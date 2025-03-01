@@ -21,11 +21,11 @@ jobs:
           # 下载 adrules.list 文件
           curl -sSL "https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list" -o adrules.list
           # 删除以 # 开头的注释行
-          grep -v '^#' adrules.list > adrules_no_comments.list
+          grep -v '^#' adrules.list > adrules_no_comments.list || true
           # 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行，生成 reject_extra.list
-          grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_no_comments.list > source/reject_extra.list
+          grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_no_comments.list > source/reject_extra.list || true
           # 提取包含 DOMAIN-SUFFIX 的行，并将 "DOMAIN-SUFFIX," 替换为 "."（行首添加 .）
-          grep 'DOMAIN-SUFFIX' adrules_no_comments.list | sed 's/^DOMAIN-SUFFIX,/\./' > temp_suffix.list
+          grep 'DOMAIN-SUFFIX' adrules_no_comments.list | sed 's/^DOMAIN-SUFFIX,/\./' > temp_suffix.list || true
 
       - name: Download and process reject.conf and surge2.txt
         run: |
@@ -33,8 +33,8 @@ jobs:
           curl -sSL "https://ruleset.skk.moe/List/domainset/reject.conf" -o reject_conf_downloaded.conf
           curl -sSL "https://anti-ad.net/surge2.txt" -o surge2.txt
           # 删除以 # 开头的注释行
-          grep -v '^#' reject_conf_downloaded.conf > processed_reject_conf.conf
-          grep -v '^#' surge2.txt > processed_surge2.txt
+          grep -v '^#' reject_conf_downloaded.conf > processed_reject_conf.conf || true
+          grep -v '^#' surge2.txt > processed_surge2.txt || true
 
       - name: Merge files and remove duplicates
         run: |
