@@ -1,44 +1,46 @@
 import os
-import requests
+import cloudscraper
 
 def fetch_content(url):
-    """下载并返回URL内容的文本，添加指定的User-Agent以避免403错误"""
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.93 (KHTML, like Gecko) Chrome/132.93.93.0 Safari/537.93"
-    }
-    response = requests.get(url, headers=headers)
+    """
+    使用 cloudscraper 绕过反爬虫措施获取 URL 内容
+    """
+    scraper = cloudscraper.create_scraper(
+        browser={
+            "browser": "chrome",
+            "platform": "windows",
+            "mobile": False
+        }
+    )
+    response = scraper.get(url)
     response.raise_for_status()
     return response.text
 
 def process_adrules():
     """
-    处理 adrules-surge.conf 文件：
-      - 删除以 '#' 开头的行；
-      - 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行；
-      - 提取包含 DOMAIN-SUFFIX 的行，并将 'DOMAIN-SUFFIX,' 替换为前置的 '.'。
+    处理 https://adrules.top/adrules-surge.conf 文件：
+      1. 删除以 '#' 开头的行；
+      2. 提取包含 "DOMAIN-KEYWORD" 或 "DOMAIN-WILDCARD" 的行，存入 extra_lines 列表；
+      3. 提取包含 "DOMAIN-SUFFIX" 的行，将格式转换为以 '.' 开头（如将 "DOMAIN-SUFFIX,example.com" 转为 ".example.com"）。
     返回两个列表：extra_lines 与 suffix_lines。
     """
     url = "https://adrules.top/adrules-surge.conf"
     content = fetch_content(url)
     lines = content.splitlines()
 
-    extra_lines = []   # 存储 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 行
-    suffix_lines = []  # 存储 DOMAIN-SUFFIX 处理后的行
+    extra_lines = []
+    suffix_lines = []
 
     for line in lines:
         line = line.strip()
-        if not line:
-            continue
-        if line.startswith("#"):
+        if not line or line.startswith("#"):
             continue
         if "DOMAIN-KEYWORD" in line or "DOMAIN-WILDCARD" in line:
             extra_lines.append(line)
         elif "DOMAIN-SUFFIX" in line:
-            # 假设格式为 "DOMAIN-SUFFIX,example.com"
             parts = line.split(",", 1)
             if len(parts) == 2:
                 domain = parts[1].strip()
-                # 确保每行开头有一个点
                 if not domain.startswith("."):
                     domain = "." + domain
                 suffix_lines.append(domain)
@@ -59,20 +61,20 @@ def process_file(url):
     return processed
 
 def main():
-    # URL 定义
+    # 定义待处理的 URL
     reject_conf_url = "https://ruleset.skk.moe/List/domainset/reject.conf"
     surge2_url = "https://anti-ad.net/surge2.txt"
 
     # 处理 adrules-surge.conf 文件
     extra_lines, suffix_lines = process_adrules()
 
-    # 处理其他两个文件
+    # 处理 reject.conf 和 surge2.txt 文件，删除所有注释行
     processed_reject_conf = process_file(reject_conf_url)
     processed_surge2 = process_file(surge2_url)
 
     # 合并 DOMAIN-SUFFIX 处理后的内容与其他两个文件的内容
     merged = suffix_lines + processed_reject_conf + processed_surge2
-    # 去重（保持顺序）
+    # 去重（保持原有顺序）
     seen = set()
     merged_unique = []
     for item in merged:
@@ -80,11 +82,11 @@ def main():
             seen.add(item)
             merged_unique.append(item)
 
-    # 指定输出目录：master/source（该文件夹已存在，且可能包含其他文件，不会被删除）
+    # 指定输出目录：master/source（保留文件夹内其他文件）
     output_dir = os.path.join("master", "source")
     os.makedirs(output_dir, exist_ok=True)
 
-    # 写入 reject_extra.list 文件（从 adrules-surge.conf 中提取的 DOMAIN-KEYWORD/DOMAIN-WILDCARD 行）
+    # 写入 reject_extra.list 文件（存放 DOMAIN-KEYWORD/DOMAIN-WILDCARD 的行）
     extra_file_path = os.path.join(output_dir, "reject_extra.list")
     with open(extra_file_path, "w", encoding="utf-8") as f:
         for line in extra_lines:
