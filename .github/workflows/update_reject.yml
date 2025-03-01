@@ -1,0 +1,55 @@
+name: Update Reject Files
+
+on:
+  schedule:
+    # 每天北京时间 0 点对应 UTC 16:00
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create source folder if not exists
+        run: mkdir -p source
+
+      - name: Download and process adrules.list
+        run: |
+          # 下载 adrules.list 文件
+          curl -sSL "https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list" -o adrules.list
+          # 删除以 # 开头的注释行
+          grep -v '^#' adrules.list > adrules_no_comments.list
+          # 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行，生成 reject_extra.list
+          grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_no_comments.list > source/reject_extra.list
+          # 提取包含 DOMAIN-SUFFIX 的行，并将 "DOMAIN-SUFFIX," 替换为 "."（行首添加 .）
+          grep 'DOMAIN-SUFFIX' adrules_no_comments.list | sed 's/^DOMAIN-SUFFIX,/\./' > temp_suffix.list
+
+      - name: Download and process reject.conf and surge2.txt
+        run: |
+          # 下载 reject.conf 和 surge2.txt 文件
+          curl -sSL "https://ruleset.skk.moe/List/domainset/reject.conf" -o reject_conf_downloaded.conf
+          curl -sSL "https://anti-ad.net/surge2.txt" -o surge2.txt
+          # 删除以 # 开头的注释行
+          grep -v '^#' reject_conf_downloaded.conf > processed_reject_conf.conf
+          grep -v '^#' surge2.txt > processed_surge2.txt
+
+      - name: Merge files and remove duplicates
+        run: |
+          # 合并 temp_suffix.list、processed_reject_conf.conf 和 processed_surge2.txt 的内容，去重后生成 reject.conf
+          cat temp_suffix.list processed_reject_conf.conf processed_surge2.txt | sort | uniq > source/reject.conf
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add source/reject.conf source/reject_extra.list
+          # 如果有改动，则提交
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update reject files"
+            git push
+          else
+            echo "No changes to commit"
+          fi
