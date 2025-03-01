@@ -1,73 +1,59 @@
-name: Update Reject Rules
+name: Update reject.conf
 
 on:
   schedule:
-    # 北京时间 0:00 对应 UTC 16:00（前一天）
-    - cron: '0 16 * * *'
+    # 每天北京时间 0 点执行，UTC 时间为前一天16:00
+    - cron: "0 16 * * *"
   workflow_dispatch:
 
 jobs:
-  update-rules:
+  update-reject-conf:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout 仓库
+        uses: actions/checkout@v2
 
-      - name: Process rules files
-        run: |
-          set -e
-          echo "创建临时工作目录"
-          mkdir temp && cd temp
-
-          ### 1. 下载并处理 adrules.list ###
-          echo "下载 adrules.list ..."
-          curl -sSL https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list -o adrules.list
-
-          # (1) 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行，生成 reject_extra.list 并添加注释统计信息
-          echo "提取 DOMAIN-KEYWORD 和 DOMAIN-WILDCARD ..."
-          grep -E "DOMAIN-KEYWORD|DOMAIN-WILDCARD" adrules.list > temp_reject_extra.list
-          total=$(wc -l < temp_reject_extra.list)
-          kw_count=$(grep -c "DOMAIN-KEYWORD" temp_reject_extra.list)
-          wild_count=$(grep -c "DOMAIN-WILDCARD" temp_reject_extra.list)
-          echo "# Total: ${total} lines, DOMAIN-KEYWORD: ${kw_count}, DOMAIN-WILDCARD: ${wild_count}" > reject_extra.list
-          cat temp_reject_extra.list >> reject_extra.list
-
-          # (2) 提取 DOMAIN-SUFFIX 行并处理：将 "DOMAIN-SUFFIX," 替换成 "."，删除前缀，确保每行以 "." 开头
-          echo "处理 DOMAIN-SUFFIX 规则 ..."
-          grep "DOMAIN-SUFFIX" adrules.list > temp_reject_suffix.list
-          sed -e 's/^DOMAIN-SUFFIX,/\./' temp_reject_suffix.list > reject_suffix.list
-
-          ### 2. 下载并处理其他规则文件 ###
-          echo "下载 additional rules 文件 ..."
-          curl -sSL https://ruleset.skk.moe/List/domainset/reject.conf -o skk_reject.conf
-          curl -sSL https://anti-ad.net/surge2.txt -o surge2.txt
-          echo "删除以 # 开头的注释行 ..."
-          grep -v "^#" skk_reject.conf > skk_reject.conf.processed
-          grep -v "^#" surge2.txt > surge2.txt.processed
-
-          ### 3. 合并规则文件 ###
-          echo "合并 DOMAIN-SUFFIX 和下载的规则 ..."
-          # 将第一步中处理 DOMAIN-SUFFIX 的结果与步骤2中处理的内容合并（去重）
-          cat reject_suffix.list skk_reject.conf.processed surge2.txt.processed > combined_rules.tmp
-          sort -u combined_rules.tmp > combined_rules.list
-          line_count=$(wc -l < combined_rules.list)
-          echo "# Total rules: ${line_count}" > reject.conf
-          cat combined_rules.list >> reject.conf
-
-          ### 4. 将生成的新文件放到 master 分支 source 文件夹中 ###
-          echo "将生成的文件移动到 source 文件夹中（覆盖同名文件） ..."
-          mv reject_extra.list ../source/reject_extra.list
-          mv reject.conf ../source/reject.conf
-
-          cd ..
-          echo "清理临时目录 ..."
-          rm -rf temp
-
-      - name: Commit and Push changes
+      - name: 配置 Git 用户信息
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add source/reject_extra.list source/reject.conf
-          # 即使文件内容无变化也覆盖原文件
-          git commit -m "Update reject rules" || echo "No changes to commit"
-          git push
+
+      - name: 下载、处理并合并文件
+        run: |
+          set -e
+          # 创建临时目录
+          mkdir temp && cd temp
+
+          # 下载 adrules.list 并提取含 DOMAIN-SUFFIX 的行，
+          # 将 "DOMAIN-SUFFIX," 替换为"."（确保每行开头为"."）
+          curl -s -o adrules.list https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list
+          grep "DOMAIN-SUFFIX," adrules.list | sed 's/DOMAIN-SUFFIX,/\./' > adrules_processed.txt
+
+          # 下载 reject.conf 和 surge2.txt，并删除以 "#" 开头的行
+          curl -s -o reject1.conf https://ruleset.skk.moe/List/domainset/reject.conf
+          curl -s -o surge2.txt https://anti-ad.net/surge2.txt
+          grep -v "^#" reject1.conf > reject1_processed.txt
+          grep -v "^#" surge2.txt > surge2_processed.txt
+
+          # 合并所有处理后的内容，去重（即使有重复只保留一个）
+          cat adrules_processed.txt reject1_processed.txt surge2_processed.txt | sort -u > merged.txt
+
+          # 统计行数，并在文件开头添加注释
+          LINE_COUNT=$(wc -l < merged.txt)
+          echo "# Total lines: ${LINE_COUNT}" > reject.conf
+          cat merged.txt >> reject.conf
+
+          # 将生成的文件移动到仓库的 source 文件夹中
+          # 注意：source 文件夹已存在且可能有其他文件，覆盖重名文件
+          mv reject.conf ../source/reject.conf
+
+          # 返回上级目录并清理临时目录
+          cd ..
+          rm -rf temp
+
+      - name: 提交并推送更改
+        run: |
+          git add source/reject.conf
+          # 即使内容无变化也创建空提交，以覆盖原有文件
+          git commit --allow-empty -m "Update reject.conf"
+          git push origin master
