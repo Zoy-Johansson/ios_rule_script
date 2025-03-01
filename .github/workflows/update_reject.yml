@@ -65,6 +65,13 @@ jobs:
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         
+        # 添加目标文件到暂存区
         git add source/reject*.list source/reject.conf
-        git commit -m "Update filter rules $(date +'%Y-%m-%d %H:%M:%S')"
-        git push
+        
+        # 检查是否有实际变更
+        if [[ $(git status --porcelain) ]]; then
+          git commit -m "Update filter rules $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
+        else
+          echo "没有检测到文件变更，跳过提交步骤"
+        fi
