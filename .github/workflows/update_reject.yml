@@ -16,37 +16,53 @@ jobs:
       - name: Create source folder if not exists
         run: mkdir -p source
 
-      - name: Download and process adrules.list
+      - name: Download adrules.list
         run: |
-          # 下载 adrules.list 文件
+          echo "Downloading adrules.list..."
           curl -sSL "https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list" -o adrules.list
-          # 删除以 # 开头的注释行
+
+      - name: Process adrules.list
+        run: |
+          echo "Removing comment lines from adrules.list..."
           grep -v '^#' adrules.list > adrules_no_comments.list || true
-          # 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行，生成 reject_extra.list
+
+          echo "Extracting DOMAIN-KEYWORD and DOMAIN-WILDCARD lines to source/reject_extra.list..."
           grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules_no_comments.list > source/reject_extra.list || true
-          # 提取包含 DOMAIN-SUFFIX 的行，并将 "DOMAIN-SUFFIX," 替换为 "."（行首添加 .）
+
+          echo "Extracting and processing DOMAIN-SUFFIX lines..."
           grep 'DOMAIN-SUFFIX' adrules_no_comments.list | sed 's/^DOMAIN-SUFFIX,/\./' > temp_suffix.list || true
+
+          echo "Content of temp_suffix.list (first 10 lines):"
+          head -n 10 temp_suffix.list
 
       - name: Download and process reject.conf and surge2.txt
         run: |
-          # 下载 reject.conf 和 surge2.txt 文件
+          echo "Downloading reject.conf and surge2.txt..."
           curl -sSL "https://ruleset.skk.moe/List/domainset/reject.conf" -o reject_conf_downloaded.conf
           curl -sSL "https://anti-ad.net/surge2.txt" -o surge2.txt
-          # 删除以 # 开头的注释行
+
+          echo "Removing comment lines from reject.conf..."
           grep -v '^#' reject_conf_downloaded.conf > processed_reject_conf.conf || true
+          echo "Removing comment lines from surge2.txt..."
           grep -v '^#' surge2.txt > processed_surge2.txt || true
+
+          echo "Content of processed_reject_conf.conf (first 10 lines):"
+          head -n 10 processed_reject_conf.conf
+          echo "Content of processed_surge2.txt (first 10 lines):"
+          head -n 10 processed_surge2.txt
 
       - name: Merge files and remove duplicates
         run: |
-          # 合并 temp_suffix.list、processed_reject_conf.conf 和 processed_surge2.txt 的内容，去重后生成 reject.conf
+          echo "Merging temp_suffix.list, processed_reject_conf.conf, and processed_surge2.txt..."
           cat temp_suffix.list processed_reject_conf.conf processed_surge2.txt | sort | uniq > source/reject.conf
+          echo "Content of source/reject.conf (first 10 lines):"
+          head -n 10 source/reject.conf
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add source/reject.conf source/reject_extra.list
-          # 如果有改动，则提交
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Update reject files"
             git push
