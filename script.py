@@ -2,8 +2,11 @@ import os
 import requests
 
 def fetch_content(url):
-    """下载并返回URL内容的文本"""
-    response = requests.get(url)
+    """下载并返回URL内容的文本，添加指定的User-Agent以避免403错误"""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.93 (KHTML, like Gecko) Chrome/132.93.93.0 Safari/537.93"
+    }
+    response = requests.get(url, headers=headers)
     response.raise_for_status()
     return response.text
 
