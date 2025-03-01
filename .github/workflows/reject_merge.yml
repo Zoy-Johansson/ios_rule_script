@@ -2,7 +2,7 @@ name: Process and Commit Files
 
 on:
   schedule:
-    # 每天北京时间0点执行：北京时间为UTC+8, 因此在UTC时间为16:00执行
+    # 每天北京时间 0 点执行（UTC 16:00）
     - cron: '0 16 * * *'
   workflow_dispatch:
 
@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies and run processing script
         run: |
-          pip install requests
+          pip install cloudscraper
           python script.py
 
       - name: Commit changes
