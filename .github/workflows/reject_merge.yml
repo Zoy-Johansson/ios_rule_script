@@ -1,59 +1,32 @@
-name: Update Reject Files
+name: Process and Commit Files
 
 on:
   schedule:
-    # 每天北京时间0点执行（UTC时间 16:00）
+    # 每天北京时间0点执行：北京时间为UTC+8, 因此在UTC时间为16:00执行
     - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
-  update-reject:
+  process_files:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Process adrules-surge.conf
-        run: |
-          # 下载 adrules-surge.conf 文件
-          curl -s https://adrules.top/adrules-surge.conf -o adrules-surge.conf
-          # 删除以 # 开头的行
-          grep -v '^#' adrules-surge.conf > tmp.conf && mv tmp.conf adrules-surge.conf
-          # 提取包含 DOMAIN-KEYWORD 或 DOMAIN-WILDCARD 的行，生成 reject_extra.list
-          grep -E 'DOMAIN-KEYWORD|DOMAIN-WILDCARD' adrules-surge.conf > reject_extra.list
-          # 提取包含 DOMAIN-SUFFIX 的行，
-          # 将行首的 "DOMAIN-SUFFIX," 替换为 "."（例如：DOMAIN-SUFFIX,example.com -> .example.com）
-          grep 'DOMAIN-SUFFIX' adrules-surge.conf | sed -E 's/^DOMAIN-SUFFIX,/\./' > adrules_suffix.txt
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-      - name: Process other rules files
+      - name: Install dependencies and run processing script
         run: |
-          # 下载另外两个规则文件
-          curl -s https://ruleset.skk.moe/List/domainset/reject.conf -o reject1.conf
-          curl -s https://anti-ad.net/surge2.txt -o surge2.txt
-          # 删除以 # 开头的行
-          grep -v '^#' reject1.conf > tmp.conf && mv tmp.conf reject1.conf
-          grep -v '^#' surge2.txt > tmp.conf && mv tmp.conf surge2.txt
+          pip install requests
+          python script.py
 
-      - name: Combine processed rules into reject.conf
+      - name: Commit changes
         run: |
-          # 合并 adrules_suffix.txt、reject1.conf 和 surge2.txt，去除重复项后生成 reject.conf
-          cat adrules_suffix.txt reject1.conf surge2.txt | sort -u > reject.conf
-
-      - name: Move generated files to source folder
-        run: |
-          # 确保 source 文件夹存在，不影响原有文件，仅覆盖同名文件
-          mkdir -p source
-          mv -f reject.conf source/reject.conf
-          mv -f reject_extra.list source/reject_extra.list
-
-      - name: Commit and push changes
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add source/reject.conf source/reject_extra.list
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Update reject.conf and reject_extra.list"
-            git push
-          else
-            echo "No changes detected."
-          fi
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add master/source/reject.conf master/source/reject_extra.list
+          git commit -m "Update processed files" || echo "No changes to commit"
+          git push
