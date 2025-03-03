@@ -43,9 +43,16 @@ jobs:
           echo "# Total lines: ${LINE_COUNT}" > reject.conf
           cat merged.txt >> reject.conf
 
+          # 新增处理：
+          # 将生成的 reject.conf 文件复制为 reject_clash.txt，
+          # 并对 reject_clash.txt 中以 "." 开头的每一行，在行首添加 "+"（例如：.example.com 变成 +.example.com）
+          cp reject.conf reject_clash.txt
+          sed -i 's/^\./+&/' reject_clash.txt
+
           # 将生成的文件移动到仓库的 source 文件夹中
           # 注意：source 文件夹已存在且可能有其他文件，覆盖重名文件
           mv reject.conf ../source/reject.conf
+          mv reject_clash.txt ../source/reject_clash.txt
 
           # 返回上级目录并清理临时目录
           cd ..
@@ -53,7 +60,7 @@ jobs:
 
       - name: 提交并推送更改
         run: |
-          git add source/reject.conf
+          git add source/reject.conf source/reject_clash.txt
           # 即使内容无变化也创建空提交，以覆盖原有文件
-          git commit --allow-empty -m "Update reject.conf"
+          git commit --allow-empty -m "Update reject.conf and reject_clash.txt"
           git push origin master
