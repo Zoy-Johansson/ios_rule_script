@@ -1,4 +1,4 @@
-# Total lines: 136537
+# Total lines: 136544
 
 +.0.101tubeporn.com
 +.0.clicks4me.fwh.is
@@ -2914,6 +2914,7 @@
 +.8041691.engage.hipages.com.au
 +.805.red
 +.8051.5clo0xmbf.com
++.80582834.xyz
 +.806.tianya.cn
 +.806.tianyaui.cn
 +.8066hg.com
@@ -11917,6 +11918,7 @@
 +.ajoqu.cn
 +.ajouny.com
 +.ajouter.net
++.ajoxxit.top
 +.ajplugins.com
 +.ajqaqk.unoliving.com
 +.ajrkm1.com
@@ -17083,7 +17085,6 @@
 +.atraff.com
 +.atraxio.com
 +.atrdb.laeckerli-huus.ch
-+.atrendsz.com
 +.atriahatband.com
 +.atriblethetch.com
 +.atris.xyz
@@ -21247,6 +21248,7 @@
 +.bpsemea.hilton.com
 +.bpsxld.meutudo.com.br
 +.bpt.webedia-group.com
++.bptnzp.top
 +.bptracking.com
 +.bpts.8111216.cn
 +.bpxbzps.xyz
@@ -40202,7 +40204,6 @@
 +.eb.trbas.com
 +.eb36c9bf12.com
 +.ebannertraffic.com
-+.ebarrels4.store
 +.ebayadservices.com
 +.ebayadvertising.com
 +.ebayadvertising.triadretail.net
@@ -44767,6 +44768,7 @@
 +.feelseveryone.com
 +.feelsjet.com
 +.feeltrail.com
++.feernhuhe.com
 +.feesee.com
 +.feetdonsub.live
 +.feethach.com
@@ -48475,7 +48477,6 @@
 +.getwisdom.io
 +.getwoohoo.com
 +.getwptag.org
-+.getxi.store
 +.getxml.org
 +.getxmlisi.com
 +.getyour5kcredits0.blogspot.com
@@ -55198,6 +55199,7 @@
 +.iadsdk.apple.com
 +.iadworkbench.apple.com
 +.iaerojczekghdr.com
++.iagadvanced.com
 +.iaglkpracviogn.com
 +.iagtm.involve.asia
 +.iaindu.cn
@@ -62523,7 +62525,6 @@
 +.kmqhmn.helen-marlen.com
 +.kmqianneng66.com
 +.kmruv.cn
-+.kms-full.com
 +.kms-pc.com
 +.kms-tool.com
 +.kmsauto.info
@@ -68263,7 +68264,6 @@
 +.looseclassroomfairfax.com
 +.looseloaf.com
 +.loosenpuppetnone.com
-+.lootcs.com
 +.lootoshevub.net
 +.lootynews.com
 +.loovaist.net
@@ -73314,6 +73314,7 @@
 +.mc.weather.com.cn
 +.mc.webvisor.org
 +.mc.yandex.com
++.mc.yandex.md
 +.mc.yandex.ru
 +.mc2o133jkwu19fv9.net.fidor.de
 +.mc7clurd09pla4nrtat7ion.com
@@ -73981,7 +73982,6 @@
 +.megawerbung.de
 +.megdexchange.com
 +.megmhokluck.shop
-+.megoindonesia.com
 +.megoszthato.blogspot.hu
 +.megpacokjce.bid
 +.megydyk.icu
@@ -78428,7 +78428,6 @@
 +.musculetepidly.com
 +.musedemeanouregyptian.com
 +.museummargin.com
-+.museuw.com
 +.mushroomplainsbroadly.com
 +.mushroomskilledshapeless.com
 +.mushywaste.com
@@ -78787,6 +78786,7 @@
 +.myasiantv.gsspcln.jp
 +.myatpe.mebelaero.ru
 +.myaudioads.com
++.mybancoschiles.gets-it.net
 +.mybbc-analytics.files.bbci.co.uk
 +.mybest.app
 +.mybestautologin567.com
@@ -79373,8 +79373,10 @@
 +.navi39.ru
 +.navi4.com
 +.navi45.ru
++.navi48.ru
 +.navi5.com
 +.navi53.com
++.navi55.com
 +.navi56.com
 +.navi58.com
 +.navi59.ru
@@ -79840,7 +79842,6 @@
 +.netstam.com
 +.netstat.yunnan.cn
 +.netstats.dk
-+.netsugar.shop
 +.nettrackway.com
 +.nettv.corio.com
 +.netund.com
@@ -82328,6 +82329,7 @@
 +.og-shopee9.com
 +.og.zyzjpx.cn
 +.ogads-pa.googleapis.com
++.ogaku.site
 +.ogb2.biopur-leanature.fr
 +.ogb2.biovie.com
 +.ogb2.eauthermalejonzac.com
@@ -94587,7 +94589,6 @@
 +.rosenberg.appmetrica.webvisor.com
 +.rosesforus.com
 +.rosettahome.cn
-+.rosettahome.top
 +.rosnctgwblg.com
 +.rosolicdalapon.com
 +.rossoad.com
@@ -106713,6 +106714,7 @@
 +.squirrelformatapologise.com
 +.squirrelhands.com
 +.squirrels.getsquirrel.co
++.squirtpresented.com
 +.squirtsuitablereverse.com
 +.sqviwr.whitekey.co.jp
 +.sqwed.371dk.com
@@ -110842,6 +110844,7 @@
 +.stealthlockers.com
 +.steamgateways.com
 +.steamjaws.com
++.steammcommunuty.ru
 +.steamtraffic.com
 +.steamunlock.com
 +.stearncommunjty.net
@@ -113750,6 +113753,7 @@
 +.tags.propertyfinder.eg
 +.tags.propertyfinder.qa
 +.tags.propertyfinder.sa
++.tags.pw.adn.cloud
 +.tags.rabobank.nl
 +.tags.radiofarda.com
 +.tags.radiomarsho.com
@@ -125839,6 +125843,7 @@
 +.vhec.jhjhyn.cn
 +.vhhvldyuhm.xyz
 +.vhinyvcsxcga.com
++.vhje.cn
 +.vhjhmsvosxius.click
 +.vhjxrj.xyz
 +.vhmengine.com
@@ -127272,6 +127277,7 @@
 +.waatch.standaard.be
 +.waati.quechoisir.org
 +.waawuu.highfashionhome.com
++.waaz.wjebboljobvaj.top
 +.waazgwojnfqx.life
 +.wabbledrutter.top
 +.wabsgz.studocu.com
@@ -133971,6 +133977,7 @@
 +.yoscae.lottechilsung.co.kr
 +.yoshatia.com
 +.yotlzh.akane-skincare.com
++.yotrack.cdn.ybn.io
 +.yotta.scrolller.com
 +.yottacash.com
 +.yottlyscript.com
