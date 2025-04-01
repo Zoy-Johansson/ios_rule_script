@@ -1,0 +1,46 @@
+name: Clash Rule Process
+
+on:
+  schedule:
+    # 洛杉矶时间凌晨0点对应 UTC 时间大约08:00（注意夏令时调整），每天执行
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  process_rules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Remove old Clash folder
+        run: |
+          rm -rf rule/Clash
+
+      - name: Clone upstream Clash folder and copy into repository
+        run: |
+          git clone --depth=1 https://github.com/blackmatrix7/ios_rule_script.git upstream_repo
+          cp -r upstream_repo/rule/Clash rule/Clash
+
+      - name: Background run mihomo
+        run: |
+          curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases \
+            | grep "browser_download_url.*mihomo-linux-amd64-alpha.*.deb" \
+            | head -n 1 \
+            | cut -d '"' -f 4 \
+            | xargs wget -q -O mihomo-linux-amd64-alpha.deb
+          sudo apt install --fix-missing ./mihomo-linux-amd64-alpha.deb
+          /usr/bin/mihomo &
+
+      - name: Run Clash_rule_process script
+        run: |
+          chmod +x Clash_rule_process.py
+          ./Clash_rule_process.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update Clash rules"
+          git push
