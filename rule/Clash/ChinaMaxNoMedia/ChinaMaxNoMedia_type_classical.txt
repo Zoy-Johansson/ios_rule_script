@@ -1,3 +1,14 @@
+DOMAIN-KEYWORD,.tmall.com
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,alipay
+DOMAIN-KEYWORD,aliyun
+DOMAIN-KEYWORD,baidu
+DOMAIN-KEYWORD,beplay
+DOMAIN-KEYWORD,officecdn
+DOMAIN-KEYWORD,taobao
+DOMAIN-KEYWORD,hnagroup
+DOMAIN-KEYWORD,stripe
+DOMAIN-KEYWORD,weibo
 PROCESS-NAME,com.taobao.taobao
 PROCESS-NAME,com.bilibili.app.blue
 PROCESS-NAME,com.bilibili.app.in
