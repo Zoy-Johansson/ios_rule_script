@@ -8,12 +8,13 @@ CLASH_DIR = os.path.join("rule", "Clash")
 def process_list_file(list_filepath):
     """
     处理一个 .list 文件，将内容分为三类：
-    1. DOMAIN 类型：仅处理以 "DOMAIN," 开头的（排除 DOMAIN-SUFFIX 和 DOMAIN-KEYWORD）
+    1. DOMAIN 类型：处理以 "DOMAIN," 开头的（但排除 DOMAIN-SUFFIX 和 DOMAIN-KEYWORD）
        与以 "DOMAIN-SUFFIX," 开头的行（将前缀替换为 "+."）。
     2. IP-CIDR 类型：处理以 "IP-CIDR," 或 "IP-CIDR6," 开头的行，
        删除对应前缀以及行尾的 ",no-resolve"（若存在）。
-    3. Classical 类型：提取不含 DOMAIN、DOMAIN-SUFFIX、IP-CIDR、IP-CIDR6、IP-ASN 的内容，
-       并过滤以 "#" 开头的注释行。
+    3. Classical 类型：提取以下两种情况：
+       - 以 "DOMAIN-KEYWORD," 开头的行（保留原内容），
+       - 或不含 DOMAIN（注意：这里不排除 DOMAIN-KEYWORD，因为已经单独判断）、DOMAIN-SUFFIX、IP-CIDR、IP-CIDR6、IP-ASN 且不以 "#" 开头的内容。
     返回3个列表：domain_lines, ipcidr_lines, classical_lines。
     """
     domain_lines = []
@@ -46,14 +47,19 @@ def process_list_file(list_filepath):
                     content = content[:-len(",no-resolve")]
                 ipcidr_lines.append(content)
             else:
-                # classical 类型：不包含以下关键字且不以 '#' 开头
-                if ("DOMAIN" not in line and
-                    "DOMAIN-SUFFIX" not in line and
-                    "IP-CIDR" not in line and
-                    "IP-CIDR6" not in line and
-                    "IP-ASN" not in line and
-                    not line.startswith("#")):
+                # 对 classical 类型的处理：
+                # 如果行以 "DOMAIN-KEYWORD," 开头，则保留
+                if line.startswith("DOMAIN-KEYWORD,"):
                     classical_lines.append(line)
+                # 否则，只保留不含以下关键词且不以 '#' 开头的内容
+                elif ("DOMAIN-SUFFIX" not in line and
+                      "IP-CIDR" not in line and
+                      "IP-CIDR6" not in line and
+                      "IP-ASN" not in line and
+                      not line.startswith("#")):
+                    # 此处也排除以 "DOMAIN," 开头的（此类已经在前面处理）
+                    if not line.startswith("DOMAIN,"):
+                        classical_lines.append(line)
     return domain_lines, ipcidr_lines, classical_lines
 
 def write_file_if_content(filepath, lines):
