@@ -1,4 +1,4 @@
-# Total lines: 139941
+# Total lines: 139964
 
 +.0.101tubeporn.com
 +.0.code.cotsta.ru
@@ -635,7 +635,6 @@
 +.13p76nnir.de
 +.13yg.cn
 +.14.y2sysv81v.com
-+.1414.selornews.com
 +.14202444.xyz
 +.142904.com
 +.1437953666.rsc.cdn77.org
@@ -1487,7 +1486,6 @@
 +.32.huanqiu.com
 +.3203.l5eamr17d.com
 +.321.jintang114.org
-+.3216.selornews.com
 +.321cba.com
 +.321naturelikefurfuroid.com
 +.3221dkf7m2.com
@@ -1784,7 +1782,6 @@
 +.411playz.com
 +.4126fe80.xyz
 +.4135.com
-+.4147.selornews.com
 +.4164d5b6eb.com
 +.4171ea7508.com
 +.41818491.xyz
@@ -2316,7 +2313,6 @@
 +.60739ebc42.com
 +.6080ai.com
 +.6096.loopanews.com
-+.6096.selornews.com
 +.60999.cn
 +.609999.xyz
 +.60jxn4.xyz
@@ -2570,7 +2566,6 @@
 +.72716408.xyz
 +.7281.bestinterestings.com
 +.72888710.xyz
-+.7295.selornews.com
 +.7299tu75.cc
 +.72d6526e68.8e323e599c.com
 +.72hdgb5o.de
@@ -2598,7 +2593,6 @@
 +.743fa12700.com
 +.74759411.xyz
 +.747dc46a4d.8428db03e3.com
-+.7493.selornews.com
 +.749558.com
 +.749808.com
 +.7500.com
@@ -2636,7 +2630,6 @@
 +.7757139f7b.com
 +.7759.com
 +.776.jstatic.xyz
-+.7764.selornews.com
 +.777-partner.com
 +.777-partner.net
 +.777-partners.com
@@ -2650,7 +2643,6 @@
 +.777seo.com
 +.777uniswap.xyz
 +.777zz777zz.com
-+.7780.selornews.com
 +.778669.com
 +.77886044.xyz
 +.7791.com.cn
@@ -3065,7 +3057,6 @@
 +.915c63962f.com
 +.91756.cn
 +.9179ef7ec3.6778056ac3.com
-+.9180.selornews.com
 +.918000.xyz
 +.9188.4puuqeh41.com
 +.9188car.com
@@ -11943,6 +11934,7 @@
 +.ako.cc
 +.akoo0513uis.com
 +.akoo0514uis.com
++.akoo0515uis.com
 +.akpiug.rarecarat.com
 +.akplvs.raja.fr
 +.aksazkxmiopf.com
@@ -16496,6 +16488,7 @@
 +.art.b.inhaabit.com
 +.art.carte-gr.total.fr
 +.artax-evn.com
++.artdecorhome.store
 +.artditement.info
 +.artefact.is
 +.arteltubman.top
@@ -22169,6 +22162,7 @@
 +.budvawshes.ru
 +.buf.lemonde.fr
 +.bufetgarrigosa.com
++.buffatopmost.com
 +.buffethypothesis.com
 +.buffetreboundfoul.com
 +.bufmjknaeprvyd.com
@@ -22671,6 +22665,7 @@
 +.bzwo2lmwioxa.com
 +.bzxvtj.xyz
 +.bzydilasq.com
++.bzyfzusiqohk.com
 +.bzyunding.com
 +.c-5uwzmx78pmca09x24aiux2euavx2ekwu.g00.msn.com
 +.c-adash.m.taobao.com
@@ -36510,6 +36505,7 @@
 +.delivery.doisongphapluat.com.vn
 +.delivery.email-pepipost.branch.rocks
 +.delivery.gettopple.com
++.delivery.lsvn.vn
 +.delivery.lululemon.com
 +.delivery.marketing.boutiqaat.com
 +.delivery.momentummedia.com.au
@@ -38317,6 +38313,7 @@
 +.doanaudabu.net
 +.doapovauma.net
 +.doappcloud.com
++.doapujoptude.net
 +.doastaiwhouwouy.com
 +.doathair.com
 +.dobbenetes.com
@@ -44967,6 +44964,7 @@
 +.faze10.com
 +.faze2.com
 +.faze24.com
++.faze3.com
 +.faze4.com
 +.faze40.com
 +.faze47.com
@@ -45517,6 +45515,7 @@
 +.fhiwyq.axiory.com
 +.fhjrpcmkyrkvi.space
 +.fhkizh.boxil.jp
++.fhl05150ps.com
 +.fhldb.site
 +.fhlfxl.thugnine.com.br
 +.fhljtu.styhome.co.kr
@@ -47208,6 +47207,7 @@
 +.friday89.com
 +.friday99.com
 +.fridayarched.com
++.fridaylocalmanager.duckdns.org
 +.fridayrefractscorer.com
 +.fridaywake.com
 +.fridgesbunt.top
@@ -48082,6 +48082,7 @@
 +.gamecps.com
 +.gamediad.com
 +.gamedrive.org
++.gamee.forum
 +.gamefowl.emailforward.mx
 +.gamefowl.karlsutt.com
 +.gamefowl.nonprofit.foundation
@@ -49348,6 +49349,7 @@
 +.github.gpuzelenograd.cloudns.be
 +.githubhelp.com
 +.gitoku.com
++.giuntaexhort.com
 +.give.mcw-fhf.org
 +.givebacks25.fun
 +.givenconserve.com
@@ -49681,6 +49683,7 @@
 +.glozeryodling.shop
 +.glpbvy.cuponatic.com
 +.glpca.com
++.glpweawxkodtvta.com
 +.glsfreeads.com
 +.glssp.net
 +.glucasegrammar.shop
@@ -51352,6 +51355,7 @@
 +.grfz.de
 +.grgnsht.nzxt.com
 +.gricechupon.top
++.gridaisefty.com
 +.gridbelow.com
 +.gridder.co
 +.gridedloamily.top
@@ -54700,7 +54704,6 @@
 +.hoojique.xyz
 +.hoojts.demmelhuber.net
 +.hook6vein.com
-+.hookahheroes.com
 +.hookawep.net
 +.hookconference.com
 +.hookjav12.fun
@@ -54869,6 +54872,7 @@
 +.hotrank.com.tw
 +.hotsocials.com
 +.hotswoman-online.com
++.hottedholster.com
 +.hottercensorbeaker.com
 +.hottraffic.nl
 +.hotupgrade.hpplay.cn
@@ -55423,6 +55427,7 @@
 +.husky.sogou.com
 +.huskypartydance.com
 +.husoxn.investors.com
++.hussaiphoa.com
 +.hut1.ru
 +.hutchieshode.com
 +.hutjfl.pennyblack.com
@@ -62667,6 +62672,7 @@
 +.kdoshbd.top
 +.kdpic.pchome.com.tw
 +.kdpxgr.travellink.no
++.kdpxksukngrg.com
 +.kdqnaec.cn
 +.kdqytm.vipre.com
 +.kdtbpt.brogsitter.de
@@ -70125,6 +70131,7 @@
 +.lv6od3a4sz12.www.logology.co
 +.lv9qr0g0.xyz
 +.lvbdml.avantajosul.ro
++.lvbeybbrwvywq.top
 +.lvcnmtl.top
 +.lvcrvm.tkc110.jp
 +.lvdpyp.easy-gliss.com
@@ -75919,6 +75926,7 @@
 +.metrics.crocs.com
 +.metrics.crossmediaservices.com
 +.metrics.cru.org
++.metrics.cs.money
 +.metrics.csmonitor.com
 +.metrics.csnhouston.com
 +.metrics.css.ch
@@ -78114,6 +78122,7 @@
 +.mkmkew.hometogo.no
 +.mkmozt.chocolats-louis.com
 +.mkmree.dmm.co.jp
++.mkocdauxf.com
 +.mkolqj.ozonee.pl
 +.mkosiw.sumai1.com
 +.mkpzmq.crocs.ru
@@ -80400,6 +80409,7 @@
 +.nalraughaksie.net
 +.nalroustaucmoux.net
 +.nalyticaframeofm.com
++.nalyxg.top
 +.nalzahqp.page.link
 +.namcah.alipearlhair.com
 +.nameads.com
@@ -80570,7 +80580,6 @@
 +.navi38.ru
 +.navi39.ru
 +.navi4.com
-+.navi42.ru
 +.navi44.com
 +.navi45.ru
 +.navi48.com
@@ -81044,7 +81053,6 @@
 +.netstam.com
 +.netstat.yunnan.cn
 +.netstats.dk
-+.netsugar.shop
 +.nettokom-lp.information.nettokom.de
 +.nettrackway.com
 +.nettv.corio.com
@@ -81749,6 +81757,8 @@
 +.nitrokod.com
 +.nitropay.com
 +.nitrous-analytics.s3.amazonaws.com
++.niu05150jd.top
++.niu05151jd.top
 +.niuaniua.com
 +.niuer-req.xy.huijitrans.com
 +.niux88.com
@@ -83124,6 +83134,7 @@
 +.oauqyw.xyz
 +.oavgoe.irs.jp
 +.oavurognaurd.net
++.oaxaubauls.com
 +.ob.leap.app
 +.ob.tracking.capitalistriseup.com
 +.ob.tracking.libertyandincome.com
@@ -83172,6 +83183,7 @@
 +.obluk.equilist.cz
 +.obmphi.xyz
 +.obnamxombt.com
++.obnoljac.com
 +.obnrap.neimanmarcus.com
 +.oboe3broo.com
 +.obooom.robinmaybag.com
@@ -84394,6 +84406,7 @@
 +.onclkds.com
 +.onclklnd.com
 +.oncustomer.asia
++.ondatraflemish.com
 +.ondbazxakr.com
 +.ondermaat.nl
 +.ondewottom.com
@@ -84876,6 +84889,7 @@
 +.opjnbmk.com
 +.opkkjh.xyz
 +.opkmio.xyz
++.opkrerkaidf.com
 +.opleshouldthink.com
 +.oplog.mulai.pw
 +.oplpectation.xyz
@@ -92327,6 +92341,7 @@
 +.qimcqs.hometogo.dk
 +.qimgg.com
 +.qimnubohcapb.com
++.qimsgi.icu
 +.qincai.info
 +.qinchugudao.com
 +.qinghua.cc
@@ -95928,7 +95943,6 @@
 +.rpsctx.chamilia.com
 +.rpsukimsjy.com
 +.rpt.kidsfootlocker.com
-+.rptbaa.shop
 +.rptdhu.top
 +.rptmoczqsf.com
 +.rpts.org
@@ -102074,6 +102088,7 @@
 +.shuaixu.site
 +.shuanshu.com.com
 +.shubadubadlskjfkf.com
++.shuceposhaiftoo.net
 +.shudderconnecting.com
 +.shudi8.com
 +.shughaxiw.com
@@ -115787,6 +115802,7 @@
 +.taemhn.zamst-online.jp
 +.taetsiainfall.shop
 +.taffetyumiacks.shop
++.taffykhirka.com
 +.tafmaster.com
 +.tag-manager.playbuzz.com
 +.tag.aftvnews.com
@@ -116341,6 +116357,7 @@
 +.tankleconflab.shop
 +.tanmqm.andrewandco.co.kr
 +.tanothingfruiti.com
++.tansazauksorg.com
 +.tansuotv.com
 +.tantoporno.com
 +.tanv.com
@@ -119450,6 +119467,7 @@
 +.toufangzhe.cn
 +.tougaipteehuboo.xyz
 +.toughhire.com
++.touphudipodou.net
 +.tour.brazzers.com
 +.tour.cineble.com
 +.tour.xxxblackbook.com
@@ -122679,6 +122697,7 @@
 +.tracking.lorainccc.edu
 +.tracking.lqm.io
 +.tracking.lseg.com
++.tracking.lsvn.vn
 +.tracking.lucky.nl
 +.tracking.luminishealth.org
 +.tracking.lythouse.com
@@ -132027,6 +132046,7 @@
 +.witnessremovalsoccer.com
 +.witnesssellingoranges.com
 +.witskirifkab.com
++.wittijtuno.com
 +.wittomeinvokes.com
 +.wittyanswer.pro
 +.wittypopcorn.com
@@ -134492,6 +134512,7 @@
 +.wyvlllooalkbv.top
 +.wyvlllooalobz.top
 +.wyvpkmbj.icu
++.wyvw.cn
 +.wywkwqzkavlvw.top
 +.wywvyf.discuss.com.hk
 +.wywvyf.price.com.hk
@@ -134730,6 +134751,7 @@
 +.xchmai.com
 +.xcinilwpypp.com
 +.xciozdacgos.com
++.xcipwuoft.com
 +.xckj0623.com
 +.xckyqq.com
 +.xclaimwords.net
@@ -136824,6 +136846,7 @@
 +.ymetrica1.com
 +.ymewsu.xyz
 +.ymgjc.com
++.ymgranque.com
 +.ymhxgl.belluna-gourmet.com
 +.ymima360.com
 +.ymixqb.nationalgeographic.com
