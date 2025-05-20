@@ -37,6 +37,11 @@ jobs:
           chmod +x Clash_rule_process.py
           ./Clash_rule_process.py
 
+      - name: Clean up temporary files
+        run: |
+          rm -rf upstream_repo
+          rm -f mihomo-linux-amd64-alpha.deb
+
       - name: Commit changes
         run: |
           git config user.name "github-actions"
@@ -44,3 +49,5 @@ jobs:
           git add .
           git diff-index --quiet HEAD || git commit -m "Update Clash rules"
           git push
+
+
