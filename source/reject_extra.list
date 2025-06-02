@@ -99,6 +99,7 @@ DOMAIN-WILDCARD,api*.moengage.com
 DOMAIN-WILDCARD,api-*.bidmachine.io
 DOMAIN-WILDCARD,api-*.hismarttv.com
 DOMAIN-WILDCARD,api16-access-ttp*.tiktokpangle-b.us
+DOMAIN-WILDCARD,apiproxy-log-nlb-1f304af4d3ac01a4.elb.us-east-*.amazonaws.com
 DOMAIN-WILDCARD,app-analytics-*.snapchat.com
 DOMAIN-WILDCARD,appanalysis*.banggood.com
 DOMAIN-WILDCARD,apple-*.le.com
@@ -138,6 +139,7 @@ DOMAIN-WILDCARD,counter*-yadro*-ru.unblocked.lol
 DOMAIN-WILDCARD,counter*.stat.ovh
 DOMAIN-WILDCARD,creative*.bidease.com
 DOMAIN-WILDCARD,cs*.mp3bars.com
+DOMAIN-WILDCARD,customerevents.us-east-*.internal.dradis.netflix.com
 DOMAIN-WILDCARD,d*.ruiwen.com
 DOMAIN-WILDCARD,d*.xinshipu.com
 DOMAIN-WILDCARD,datacollect*.abtasty.com
@@ -145,6 +147,7 @@ DOMAIN-WILDCARD,datacollector-*.dt.dbankcloud.cn
 DOMAIN-WILDCARD,datacollector-*.dt.hicloud.com
 DOMAIN-WILDCARD,device-metrics-*.amazon.com
 DOMAIN-WILDCARD,device-metrics-us*.amazon.com
+DOMAIN-WILDCARD,discovery-ios-*.ertelecom.ru
 DOMAIN-WILDCARD,display-ad-*.kgslb.com
 DOMAIN-WILDCARD,dj1*.online
 DOMAIN-WILDCARD,dm*.yxlady.com
@@ -219,6 +222,7 @@ DOMAIN-WILDCARD,log*.zijieapi.com
 DOMAIN-WILDCARD,log-*.epicdn.me
 DOMAIN-WILDCARD,log-*.previewnetworks.com
 DOMAIN-WILDCARD,log-*.zadn.vn
+DOMAIN-WILDCARD,log-va*.capcutapi.com
 DOMAIN-WILDCARD,logger-*.dailymotion.com
 DOMAIN-WILDCARD,logservice-*.platform.dbankcloud.cn
 DOMAIN-WILDCARD,lt*.tritondigital.com
@@ -246,6 +250,7 @@ DOMAIN-WILDCARD,mon*-misc-lf.fqnovel.com
 DOMAIN-WILDCARD,mon-*.lemon8-app.com
 DOMAIN-WILDCARD,mon-*.lemon8-app.us
 DOMAIN-WILDCARD,mon-*.tiktokv.com
+DOMAIN-WILDCARD,mon-va*.capcutapi.com
 DOMAIN-WILDCARD,ms*.applvn.com
 DOMAIN-WILDCARD,mssdk*.capcutapi.com
 DOMAIN-WILDCARD,mssdk*.zijieapi.com
@@ -315,7 +320,9 @@ DOMAIN-WILDCARD,telemetry*.transcend.io
 DOMAIN-WILDCARD,thezbpe5*.xyz
 DOMAIN-WILDCARD,tnc*.tiktokv.us
 DOMAIN-WILDCARD,tnc*.zijieapi.com
+DOMAIN-WILDCARD,tnc-va*.capcutapi.com
 DOMAIN-WILDCARD,tnc16-*.byteoversea.com
+DOMAIN-WILDCARD,tnc16-*.hypic.com
 DOMAIN-WILDCARD,track.*.roku.com
 DOMAIN-WILDCARD,tracking*.euroads.fi
 DOMAIN-WILDCARD,tracking-*.trnox.com
