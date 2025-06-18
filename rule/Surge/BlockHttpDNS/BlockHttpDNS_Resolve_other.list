@@ -1,0 +1,29 @@
+# NAME: BlockHttpDNS
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-06-06 09:20:00
+# DOMAIN: 18
+# DOMAIN-SUFFIX: 4
+# TOTAL: 63
+DOMAIN,dns.jd.com
+DOMAIN,dns.weibo.cn
+DOMAIN,dns.weixin.qq.com
+DOMAIN,dns.weixin.qq.com.cn
+DOMAIN,httpdns-api.aliyuncs.com
+DOMAIN,httpdns-sc.aliyuncs.com
+DOMAIN,httpdns.alicdn.com
+DOMAIN,httpdns.bilivideo.com
+DOMAIN,httpdns.c.cdnhwc2.com
+DOMAIN,httpdns.calorietech.com
+DOMAIN,httpdns.meituan.com
+DOMAIN,httpdns.music.163.com
+DOMAIN,httpdns.n.netease.com
+DOMAIN,httpdns.push.oppomobile.com
+DOMAIN,httpdns.volcengineapi.com
+DOMAIN,httpdns.yunxindns.com
+DOMAIN,lofter.httpdns.c.163.com
+DOMAIN,music.httpdns.c.163.com
+DOMAIN-SUFFIX,httpdns.baidu.com
+DOMAIN-SUFFIX,httpdns.baidubce.com
+DOMAIN-SUFFIX,httpdns.pro
+DOMAIN-SUFFIX,httpsdns.baidu.com
