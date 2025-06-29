@@ -1,0 +1,84 @@
+####################################
+# 创建者：v2rayse.com
+# 客户端：Surge
+# 创建时间：2024-09-04 22:49:11
+# 使用模版：V2RaySE 默认模版
+# 节点数量：38
+####################################
+
+[General]
+loglevel = notify
+bypass-system = true
+skip-proxy = 127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,100.64.0.0/10,localhost,*.local,e.crashlytics.com,captive.apple.com,::ffff:0:0:0:0/1,::ffff:128:0:0:0/1
+#DNS设置或根据自己网络情况进行相应设置
+bypass-tun = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
+dns-server = 119.29.29.29,223.5.5.5,218.30.19.40,61.134.1.4
+external-controller-access = password@0.0.0.0:6170
+http-api = password@0.0.0.0:6171
+test-timeout = 5
+http-api-web-dashboard = true
+exclude-simple-hostnames = true
+allow-wifi-access = true
+http-listen = 0.0.0.0:6152
+socks5-listen = 0.0.0.0:6153
+wifi-access-http-port = 6152
+wifi-access-socks5-port = 6153
+
+[Script]
+http-request https?:\/\/.*\.iqiyi\.com\/.*authcookie= script-path=https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/iQIYI.js
+
+[Proxy]
+DIRECT = direct
+🇬🇧英国曼彻斯特1 = ss,141.98.101.178,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国曼彻斯特3 = ss,141.98.101.180,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国5 = ss,212.102.53.81,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国6 = ss,212.102.53.79,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国7 = ss,212.102.53.196,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国8 = ss,212.102.53.198,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国9 = ss,212.102.53.197,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国曼彻斯特4 = ss,141.98.101.179,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国曼彻斯特5 = ss,141.98.101.182,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国2 = ss,212.102.53.194,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇯🇵日本1 = ss,149.22.87.204,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇯🇵日本2 = ss,149.22.87.241,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇯🇵日本4 = ss,212.102.50.42,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇨🇦加拿大温哥华1 = ss,162.216.47.66,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国新泽西1 = ss,37.19.198.243,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国新泽西4 = ss,37.19.198.244,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国1 = ss,184.170.241.194,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国达拉斯1 = ss,156.146.38.163,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西南部1 = ss,156.146.38.169,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西南部4 = ss,156.146.38.170,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西雅图1 = ss,212.102.47.130,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇳🇱荷兰1 = ss,109.201.152.181,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇳🇱荷兰2 = ss,149.34.244.69,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇳🇱荷兰3 = ss,149.34.244.72,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇳🇱荷兰4 = ss,149.34.244.76,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇳🇱荷兰5 = ss,149.34.244.82,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国1 = ss,212.102.53.78,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇨🇭瑞士1 = ss,156.146.62.162,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西雅图2 = ss,212.102.47.131,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇨🇭瑞士2 = ss,156.146.62.161,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇨🇭瑞士3 = ss,156.146.62.163,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇨🇭瑞士4 = ss,156.146.62.164,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国曼彻斯特2 = ss,141.98.101.181,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇯🇵日本3 = ss,149.22.87.240,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国新泽西2 = ss,37.19.198.160,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西南部2 = ss,156.146.38.168,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国3 = ss,212.102.53.193,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西雅图3 = ss,212.102.47.129,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西雅图4 = ss,212.102.47.132,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国新泽西3 = ss,37.19.198.236,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇬🇧英国4 = ss,212.102.53.195,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西南部3 = ss,156.146.38.167,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+
+[Proxy Group]
+🐟 漏网之鱼 = select,🚀 节点选择,🎯 全球直连,♻️ 自动选择,🇬🇧英国曼彻斯特1,🇬🇧英国曼彻斯特3,🇬🇧英国5,🇬🇧英国6,🇬🇧英国7,🇬🇧英国8,🇬🇧英国9,🇬🇧英国曼彻斯特4,🇬🇧英国曼彻斯特5,🇬🇧英国2,🇯🇵日本1,🇯🇵日本2,🇯🇵日本4,🇨🇦加拿大温哥华1,🇺🇸美国新泽西1,🇺🇸美国新泽西4,🇺🇸美国1,🇺🇸美国达拉斯1,🇺🇸美国西南部1,🇺🇸美国西南部4,🇺🇸美国西雅图1,🇳🇱荷兰1,🇬🇧英国1,🇨🇭瑞士1,🇺🇸美国西雅图2,🇨🇭瑞士2,🇨🇭瑞士3,🇨🇭瑞士4,🇬🇧英国曼彻斯特2,🇯🇵日本3,🇺🇸美国新泽西2,🇺🇸美国西南部2,🇬🇧英国3,🇺🇸美国西雅图3,🇺🇸美国西雅图4,🇺🇸美国新泽西3,🇬🇧英国4,🇺🇸美国西南部3
+
+[Rule]
+# 本地/局域网地址
+# 参考：https://en.wikipedia.org/wiki/Reserved_IP_addresses
+# ACL4SSR标志 如没有，代表不是用ACL4SSR规则
+# 本地/局域网地址
+# Router managed 路由器管理域名
+FINAL,🐟 漏网之鱼
