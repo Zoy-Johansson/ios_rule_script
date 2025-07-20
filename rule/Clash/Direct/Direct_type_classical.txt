@@ -1,3 +1,4 @@
+DOMAIN-KEYWORD,amp-api.podcasts.apple.com
 DOMAIN-KEYWORD,anti-ad.net
 DOMAIN-KEYWORD,api-adservices.apple.com
 DOMAIN-KEYWORD,api.smoot.apple.cn
