@@ -1,0 +1,8 @@
+# NAME: Zhihu
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-06-06 09:18:49
+# DOMAIN-SUFFIX: 2
+# TOTAL: 7
+DOMAIN-SUFFIX,zhihu.com
+DOMAIN-SUFFIX,zhimg.com
