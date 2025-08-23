@@ -21,46 +21,75 @@ jobs:
       - name: 下载、处理并合并文件
         run: |
           set -e
-          # 创建临时目录
           mkdir temp && cd temp
 
-          # 下载 adrules.list 并提取含 DOMAIN-SUFFIX 的行，
-          # 将 "DOMAIN-SUFFIX," 替换为"."（确保每行开头为"."）
-          curl -s -o adrules.list https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list
+          # 定义检测函数
+          check_file() {
+            if grep -qi "<html" "$1"; then
+              echo "❌ 下载失败：$1 内容疑似 HTML，停止执行"
+              head -n 20 "$1"
+              exit 1
+            fi
+          }
+
+          # 定义下载函数（自动重试3次）
+          download() {
+            local url=$1
+            local output=$2
+            local attempt=1
+            local max_attempts=3
+            local delay=5
+            while [ $attempt -le $max_attempts ]; do
+              echo "⬇️ 正在下载: $url (尝试 $attempt/$max_attempts)"
+              if curl -sL --fail -o "$output" "$url"; then
+                check_file "$output"
+                echo "✅ 下载成功: $output"
+                return 0
+              else
+                echo "⚠️ 下载失败: $url"
+              fi
+              attempt=$((attempt+1))
+              if [ $attempt -le $max_attempts ]; then
+                echo "⏳ 等待 $delay 秒后重试..."
+                sleep $delay
+              fi
+            done
+            echo "❌ 多次下载失败: $url"
+            exit 1
+          }
+
+          # 下载并处理
+          download https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list adrules.list
           grep "DOMAIN-SUFFIX," adrules.list | sed 's/DOMAIN-SUFFIX,/\./' > adrules_processed.txt
 
-          # 下载 reject.conf 和 surge2.txt，并删除以 "#" 开头的行
-          curl -s -o reject1.conf https://ruleset.skk.moe/List/domainset/reject.conf
-          curl -s -o surge2.txt https://anti-ad.net/surge2.txt
+          download https://ruleset.skk.moe/List/domainset/reject.conf reject1.conf
           grep -v "^#" reject1.conf > reject1_processed.txt
+
+          download https://anti-ad.net/surge2.txt surge2.txt
           grep -v "^#" surge2.txt > surge2_processed.txt
 
-          # 合并所有处理后的内容，去重（即使有重复只保留一个）
+          # 合并去重
           cat adrules_processed.txt reject1_processed.txt surge2_processed.txt | sort -u > merged.txt
 
-          # 统计行数，并在文件开头添加注释
+          # 统计行数并写入 reject.conf
           LINE_COUNT=$(wc -l < merged.txt)
           echo "# Total lines: ${LINE_COUNT}" > reject.conf
           cat merged.txt >> reject.conf
 
-          # 新增处理：
-          # 将生成的 reject.conf 文件复制为 reject_clash.txt，
-          # 并对 reject_clash.txt 中以 "." 开头的每一行，在行首添加 "+"（例如：.example.com 变成 +.example.com）
+          # 生成 reject_clash.txt
           cp reject.conf reject_clash.txt
           sed -i 's/^\./+&/' reject_clash.txt
 
-          # 将生成的文件移动到仓库的 source 文件夹中
-          # 注意：source 文件夹已存在且可能有其他文件，覆盖重名文件
+          # 移动到 source 文件夹
           mv reject.conf ../source/reject.conf
           mv reject_clash.txt ../source/reject_clash.txt
 
-          # 返回上级目录并清理临时目录
+          # 清理临时目录
           cd ..
           rm -rf temp
 
       - name: 提交并推送更改
         run: |
           git add source/reject.conf source/reject_clash.txt
-          # 即使内容无变化也创建空提交，以覆盖原有文件
           git commit --allow-empty -m "Update reject.conf and reject_clash.txt"
           git push origin master
