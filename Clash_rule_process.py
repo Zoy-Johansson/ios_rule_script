@@ -80,7 +80,9 @@ def convert_file(rule_type, filepath):
     filepath: 源 txt 文件路径
     生成的 mrs 文件路径为 <filepath>.mrs
     """
-    mrs_filepath = filepath + ".mrs"
+    # 获取不包含 .txt 后缀的文件名
+    base_name = os.path.splitext(filepath)[0]
+    mrs_filepath = base_name + ".mrs"  # 去掉 .txt 后缀，添加 .mrs 后缀
     cmd = ["mihomo", "convert-ruleset", rule_type, "text", filepath, mrs_filepath]
     try:
         subprocess.run(cmd, check=True)
