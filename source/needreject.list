@@ -4,3 +4,4 @@ DOMAIN-KEYWORD,mcdn,REJECT
 # 屏蔽勾正数据
 DOMAIN-SUFFIX,gz-data.com
 DOMAIN,boot.biz.weibo.com
+DOMAIN-KEYWORD,cleanmaster
