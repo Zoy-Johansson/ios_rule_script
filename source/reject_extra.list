@@ -111,6 +111,7 @@ DOMAIN-WILDCARD,apple-*.le.com
 DOMAIN-WILDCARD,applog*.matrix.easebar.com
 DOMAIN-WILDCARD,asd8900.oss-*.aliyuncs.com
 DOMAIN-WILDCARD,at*.doubanio.com
+DOMAIN-WILDCARD,attr-logs.*.amazonaws.com
 DOMAIN-WILDCARD,auth-*.hismarttv.com
 DOMAIN-WILDCARD,ax.*.ifeng.com
 DOMAIN-WILDCARD,banner.*.tccapis.com
@@ -331,6 +332,7 @@ DOMAIN-WILDCARD,t*.playdigo.live
 DOMAIN-WILDCARD,t*.zcvh.net
 DOMAIN-WILDCARD,tblog-*.kgslb.com
 DOMAIN-WILDCARD,telemetry*.transcend.io
+DOMAIN-WILDCARD,telemetry.*.pvp.net
 DOMAIN-WILDCARD,thezbpe5*.xyz
 DOMAIN-WILDCARD,tnc*.tiktokv.us
 DOMAIN-WILDCARD,tnc*.zijieapi.com
