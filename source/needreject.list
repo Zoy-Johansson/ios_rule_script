@@ -5,3 +5,16 @@ DOMAIN-KEYWORD,mcdn,REJECT
 DOMAIN-SUFFIX,gz-data.com
 DOMAIN,boot.biz.weibo.com
 DOMAIN-KEYWORD,cleanmaster
+DOMAIN,aus5.mozilla.org
+DOMAIN,incoming.telemetry.mozilla.org
+DOMAIN,firefox-settings-attachments.cdn.mozilla.net
+DOMAIN,firefox.settings.services.mozilla.com
+DOMAIN,content-signature-2.cdn.mozilla.net
+DOMAIN,location.services.mozilla.com
+DOMAIN,telemetry.mozilla.org
+DOMAIN,crash-reports.mozilla.com
+DOMAIN,detectportal.firefox.com
+DOMAIN,push.services.mozilla.com
+DOMAIN,shavar.services.mozilla.com
+DOMAIN,snippets.cdn.mozilla.net
+DOMAIN,activity-stream-icons.services.mozilla.com
