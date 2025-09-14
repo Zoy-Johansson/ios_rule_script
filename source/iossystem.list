@@ -18,3 +18,17 @@ DOMAIN-SUFFIX,lcdn-registration.apple.com
 DOMAIN-SUFFIX,ls.apple.com
 PROCESS-NAME,trustd
 PROCESS-NAME,netbiosd
+USER-AGENT,"*com.apple.mobileme.fmip1",DIRECT
+USER-AGENT,"*WeatherFoundation*",DIRECT
+USER-AGENT,"%E5%9C%B0%E5%9B%BE*",DIRECT
+USER-AGENT,"%E8%AE%BE%E7%BD%AE*",DIRECT
+USER-AGENT,"com.apple.geod*",DIRECT
+USER-AGENT,"com.apple.Maps",DIRECT
+USER-AGENT,"FindMyFriends*",DIRECT
+USER-AGENT,"FindMyiPhone*",DIRECT
+USER-AGENT,"FMDClient*",DIRECT
+USER-AGENT,"FMFD*",DIRECT
+USER-AGENT,"fmflocatord*",DIRECT
+USER-AGENT,"geod*",DIRECT
+USER-AGENT,"locationd*",DIRECT
+USER-AGENT,"Maps*",DIRECT
