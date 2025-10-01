@@ -158,7 +158,8 @@
       "server": "149.22.87.204",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "日本"
     },
     {
       "tag": "🇯🇵日本2",
@@ -166,7 +167,8 @@
       "server": "149.22.87.241",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "日本"
     },
     {
       "tag": "🇯🇵日本3",
@@ -174,7 +176,8 @@
       "server": "149.22.87.240",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "日本"
     },
     {
       "tag": "🇯🇵日本4",
@@ -182,7 +185,8 @@
       "server": "212.102.50.42",
       "server_port": 443,
       "method": "aes-128-cfb",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "日本"
     },
     {
       "tag": "🇳🇱荷兰1",
@@ -190,7 +194,8 @@
       "server": "109.201.152.181",
       "server_port": 443,
       "method": "aes-128-cfb",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "其他地区"
     },
     {
       "tag": "🇳🇱荷兰2",
@@ -198,7 +203,8 @@
       "server": "149.34.244.69",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "其他地区"
     },
     {
       "tag": "🇳🇱荷兰3",
@@ -206,7 +212,8 @@
       "server": "149.34.244.72",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "其他地区"
     },
     {
       "tag": "🇳🇱荷兰4",
@@ -214,7 +221,8 @@
       "server": "149.34.244.76",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "其他地区"
     },
     {
       "tag": "🇳🇱荷兰5",
@@ -222,7 +230,8 @@
       "server": "149.34.244.82",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "其他地区"
     },
     {
       "tag": "🇺🇸美国1",
@@ -230,7 +239,8 @@
       "server": "184.170.241.194",
       "server_port": 443,
       "method": "aes-128-cfb",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国新泽西1",
@@ -238,7 +248,8 @@
       "server": "37.19.198.243",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国新泽西2",
@@ -246,7 +257,8 @@
       "server": "37.19.198.160",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国新泽西3",
@@ -254,7 +266,8 @@
       "server": "37.19.198.236",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国新泽西4",
@@ -262,7 +275,8 @@
       "server": "37.19.198.244",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西南部1",
@@ -270,7 +284,8 @@
       "server": "156.146.38.169",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西南部2",
@@ -278,7 +293,8 @@
       "server": "156.146.38.168",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西南部3",
@@ -286,7 +302,8 @@
       "server": "156.146.38.167",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西南部4",
@@ -294,7 +311,8 @@
       "server": "156.146.38.170",
       "server_port": 443,
       "method": "aes-128-gcm",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西雅图1",
@@ -303,7 +321,8 @@
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "tcp_fast_open": true
+      "tcp_fast_open": true,
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西雅图2",
@@ -312,7 +331,8 @@
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "tcp_fast_open": true
+      "tcp_fast_open": true,
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西雅图3",
@@ -321,7 +341,8 @@
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "tcp_fast_open": true
+      "tcp_fast_open": true,
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西雅图4",
@@ -330,7 +351,8 @@
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "tcp_fast_open": true
+      "tcp_fast_open": true,
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西雅图5",
@@ -339,7 +361,8 @@
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "tcp_fast_open": true
+      "tcp_fast_open": true,
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国西雅图6",
@@ -348,7 +371,8 @@
       "server_port": 443,
       "method": "aes-128-gcm",
       "password": "shadowsocks",
-      "tcp_fast_open": true
+      "tcp_fast_open": true,
+      "detour": "PIA前置"
     },
     {
       "tag": "🇺🇸美国达拉斯1",
@@ -356,7 +380,8 @@
       "server": "156.146.38.163",
       "server_port": 443,
       "method": "aes-128-cfb",
-      "password": "shadowsocks"
+      "password": "shadowsocks",
+      "detour": "PIA前置"
     }
   ]
 }
