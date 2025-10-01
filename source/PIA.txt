@@ -49,7 +49,6 @@ DIRECT = direct
 🇺🇸美国达拉斯1 = ss,156.146.38.163,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
 🇺🇸美国西南部1 = ss,156.146.38.169,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇺🇸美国西南部4 = ss,156.146.38.170,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
-🇺🇸美国西雅图1 = ss,158.173.153.1,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇳🇱荷兰1 = ss,109.201.152.181,443,encrypt-method=aes-128-cfb,password=shadowsocks,tfo=false,udp-relay=false
 🇳🇱荷兰2 = ss,149.34.244.69,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇳🇱荷兰3 = ss,149.34.244.72,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
@@ -57,7 +56,6 @@ DIRECT = direct
 🇳🇱荷兰5 = ss,149.34.244.82,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇬🇧英国1 = ss,212.102.53.78,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇨🇭瑞士1 = ss,156.146.62.162,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
-🇺🇸美国西雅图2 = ss,158.173.153.3,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇨🇭瑞士2 = ss,156.146.62.161,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇨🇭瑞士3 = ss,156.146.62.163,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇨🇭瑞士4 = ss,156.146.62.164,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
@@ -66,8 +64,12 @@ DIRECT = direct
 🇺🇸美国新泽西2 = ss,37.19.198.160,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇺🇸美国西南部2 = ss,156.146.38.168,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇬🇧英国3 = ss,212.102.53.193,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
-🇺🇸美国西雅图3 = ss,158.173.153.5,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
-🇺🇸美国西雅图4 = ss,158.173.153.6,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
+🇺🇸美国西雅图1 = ss,158.173.153.1,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=true,udp-relay=false
+🇺🇸美国西雅图2 = ss,158.173.153.2,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=true,udp-relay=false
+🇺🇸美国西雅图3 = ss,158.173.153.3,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=true,udp-relay=false
+🇺🇸美国西雅图4 = ss,158.173.153.4,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=true,udp-relay=false
+🇺🇸美国西雅图5 = ss,158.173.153.5,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=true,udp-relay=false
+🇺🇸美国西雅图6 = ss,158.173.153.6,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=true,udp-relay=false
 🇺🇸美国新泽西3 = ss,37.19.198.236,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇬🇧英国4 = ss,212.102.53.195,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
 🇺🇸美国西南部3 = ss,156.146.38.167,443,encrypt-method=aes-128-gcm,password=shadowsocks,tfo=false,udp-relay=false
