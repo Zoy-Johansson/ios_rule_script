@@ -52,6 +52,7 @@ DOMAIN-KEYWORD,googleads
 DOMAIN-KEYWORD,hostingcloud
 DOMAIN-KEYWORD,inmobi
 DOMAIN-KEYWORD,insights-collector.
+DOMAIN-KEYWORD,itabelog
 DOMAIN-KEYWORD,jads
 DOMAIN-KEYWORD,jshosting
 DOMAIN-KEYWORD,marketing.net
